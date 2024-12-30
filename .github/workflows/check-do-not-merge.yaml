@@ -14,12 +14,12 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Fail if PR is labeled with do not merge
-        if: contains(github.event.pull_request.labels.*.name, 'Status/Do Not Merge')
+        if: contains(github.event.pull_request.labels.*.name, 'do-not-merge')
         run: |
           echo "This PR can't be merged, due to the 'Status/Do Not Merge' label."
           exit 1          
       - name: OK if PR is not labeled with do not merge
-        if: "!contains(github.event.pull_request.labels.*.name, 'Status/Do Not Merge')"
+        if: "!contains(github.event.pull_request.labels.*.name, 'do-not-merge')"
         run: |
           echo "This PR can be merged."
           exit 0
