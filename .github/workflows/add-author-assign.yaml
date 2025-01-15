@@ -1,0 +1,18 @@
+name: Auto Author Assign
+
+on:
+  workflow_call:
+  pull_request:
+  #pull_request_target:
+  #  types: [ opened, reopened ]
+
+jobs:
+  assign-author:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Debug Event
+        run: echo "$EVENT"
+        env:
+          EVENT: ${{toJSON(github)}}
+      - name: Auto Assign
+        uses: toshimaru/auto-author-assign@v2.1.1
